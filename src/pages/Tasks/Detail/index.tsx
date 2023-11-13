@@ -29,11 +29,12 @@ const Detail: React.FC = () => {
   }
 
   async function findTask() {
-    const response = await api.get<ITask>(`/tasks/${id}`);
-    setTask(response.data);
+    if (id !== undefined) {
+      const response = await api.get(`/tasks/${id}`);
+      console.log(response);
+      setTask(response.data);
+    }
   }
-
-  // Quando o param "id" mudar/receber um novo valor, o useEffect será executado chamando o findTask
 
   useEffect(() => {
     findTask();

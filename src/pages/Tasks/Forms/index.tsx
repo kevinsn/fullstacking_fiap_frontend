@@ -25,7 +25,7 @@ const Form: React.FC = () => {
   useEffect(() => {
     console.log(id);
 
-    findTask(id);
+    // findTask(id);
   }, [id]);
 
   function updatedModel(e: ChangeEvent<HTMLInputElement>) {
@@ -38,30 +38,40 @@ const Form: React.FC = () => {
 
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    try {
-      const response = id
-        ? await api.put(`/tasks/${id}`, model)
-        : await api.post("/tasks", model);
-      back();
-    } catch (error) {
-      console.error("Error submitting the form:", error);
-    }
+    const response = id
+      ? await api.put(`/tasks/${id}`, model)
+      : await api.post("/tasks", model);
+    back();
   }
-
 
   function back() {
     navigate(-1);
   }
 
   async function findTask(id?: string) {
-    const response = await api.get(`/tasks/${id}`);
+    try {
+      if (!id) {
+        console.error('ID is undefined or null');
+        return;
+      }
 
-    console.log(response);
-    setModel({
-      title: response.data.title,
-      description: response.data.description,
-    });
+      const response = await api.get(`/tasks/${id}`);
+
+      console.log("teste " + JSON.stringify(response));
+
+      if (response.data) {
+        setModel({
+          title: response.data.title || '',
+          description: response.data.description || '',
+        });
+      } else {
+        console.error('Response data is undefined or null');
+      }
+    } catch (error) {
+      console.error('Error fetching task:', error);
+    }
   }
+
 
   return (
     <div className="container">
