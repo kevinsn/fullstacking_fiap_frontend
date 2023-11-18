@@ -24,9 +24,6 @@ const Tasks: React.FC = () => {
 
   async function loadTasks() {
     const response = await api.get("/tasks");
-
-    console.log(response);
-
     setTasks(response.data);
   }
 
@@ -35,7 +32,7 @@ const Tasks: React.FC = () => {
   }
 
   function newTask() {
-    navigate("/tarefas/cadastro");
+    navigate("/cadastro");
   }
 
   async function finishedTask(id: number) {
@@ -49,7 +46,7 @@ const Tasks: React.FC = () => {
   }
 
   function editTask(id: number) {
-    navigate(`/tarefas/cadastro/${id}`);
+    navigate(`/cadastro/${id}`);
   }
 
   function viewTask(id: number) {
@@ -60,7 +57,7 @@ const Tasks: React.FC = () => {
     <div className="container">
       <br />
       <div className="task-header">
-        <h1>Tarefas</h1>
+        <h1>Minhas Tarefas</h1>
         <Button variant="dark" size="sm" onClick={newTask}>
           Nova Tarefa
         </Button>

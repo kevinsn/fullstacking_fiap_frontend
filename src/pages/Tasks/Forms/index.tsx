@@ -78,7 +78,7 @@ const Form: React.FC = () => {
       <br />
 
       <div className="task-header">
-        <h1>Nova Tarefa</h1>
+        <h1>Tarefa</h1>
 
         <Button variant="dark" size="sm" onClick={back}>
           Voltar

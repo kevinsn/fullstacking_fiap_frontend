@@ -6,20 +6,19 @@ import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">Tarefas</Navbar.Brand>
+        <Navbar.Brand href="">Full Stacking FIAP</Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} className="nav-Item" to="/">
-              Início
+              Minhas Tarefas
             </Nav.Link>
-
-            <Nav.Link as={Link} className="nav-Item" to="/tarefas">
-              Tarefas
+            <Nav.Link as={Link} className="nav-Item" to="/cadastro">
+              Nova Tarefa
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
