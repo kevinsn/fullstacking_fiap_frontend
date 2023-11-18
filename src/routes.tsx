@@ -2,7 +2,6 @@ import React from "react";
 
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
 import Tasks from "./pages/Tasks";
 import Form from "./pages/Tasks/Forms";
 import Detail from "./pages/Tasks/Detail";

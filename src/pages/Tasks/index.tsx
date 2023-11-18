@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import moment from "moment";
@@ -49,74 +49,49 @@ const Tasks: React.FC = () => {
     navigate(`/cadastro/${id}`);
   }
 
-  function viewTask(id: number) {
-    navigate(`/tarefas/${id}`);
-  }
-
   return (
     <div className="container">
       <br />
       <div className="task-header">
-        <h1>Minhas Tarefas</h1>
+        <h1>Minhas Anotações</h1>
         <Button variant="dark" size="sm" onClick={newTask}>
-          Nova Tarefa
+          Nova Anotação
         </Button>
       </div>
       <br />
-      <Table striped bordered hover className="text-center">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Data de Atualização</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {tasks.map((task) => (
-            <tr key={task.id}>
-              <td>{task.id}</td>
-              <td>{task.title}</td>
-              <td>{formatDate(task.updated_at)}</td>
-              <td>{task.finished ? "Finalizado" : "Pendente"}</td>
-              <td>
-                <Button
-                  size="sm"
-                  variant="primary"
-                  disabled={task.finished}
-                  onClick={() => editTask(task.id)}
-                >
-                  Editar
-                </Button>{" "}
-                <Button
-                  size="sm"
-                  variant="success"
-                  disabled={task.finished}
-                  onClick={() => finishedTask(task.id)}
-                >
-                  Finalizar
-                </Button>
-                <Button
-                  size="sm"
-                  variant="warning"
-                  onClick={() => viewTask(task.id)}
-                >
-                  Visualizar
-                </Button>{" "}
-                <Button
-                  size="sm"
-                  variant="danger"
-                  onClick={() => deleteTask(task.id)}
-                >
-                  Remover
-                </Button>{" "}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      {tasks.map((task) => (
+        <Card key={task.id} className="task-card">
+          <Card.Header className="texto-titulo">{task.title} <Card.Text className="texto">Data de Atualização: {formatDate(task.updated_at)} | Status: {task.finished ? "Finalizado" : "Pendente"}</Card.Text></Card.Header>
+          <Card.Body>
+            <pre style={{ whiteSpace: "pre-wrap" }}><Card.Text>{task.description}</Card.Text></pre>
+            <div className="text-center">
+              <Button
+                size="sm"
+                variant="outline-primary"
+                disabled={task.finished}
+                onClick={() => editTask(task.id)}
+              >
+                Alterar
+              </Button>{" "}
+              <Button
+                size="sm"
+                variant="outline-success"
+                disabled={task.finished}
+                onClick={() => finishedTask(task.id)}
+              >
+                Concluir
+              </Button>{" "}
+              <Button
+                size="sm"
+                variant="outline-danger"
+                onClick={() => deleteTask(task.id)}
+              >
+                Excluir
+              </Button>{" "}
+            </div>
+          </Card.Body>
+        </Card>
+      ))}
     </div>
   );
 };

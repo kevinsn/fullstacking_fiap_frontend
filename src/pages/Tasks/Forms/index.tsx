@@ -25,7 +25,7 @@ const Form: React.FC = () => {
   useEffect(() => {
     console.log(id);
 
-    // findTask(id);
+    findTask(id);
   }, [id]);
 
   function updatedModel(e: ChangeEvent<HTMLInputElement>) {
@@ -78,7 +78,7 @@ const Form: React.FC = () => {
       <br />
 
       <div className="task-header">
-        <h1>Tarefa</h1>
+        <h1>Anotação</h1>
 
         <Button variant="dark" size="sm" onClick={back}>
           Voltar
@@ -89,7 +89,7 @@ const Form: React.FC = () => {
 
       <div className="container">
         <BootstrapForm onSubmit={onSubmit}>
-          <BootstrapForm.Group>
+          <BootstrapForm.Group className="form-group">
             <BootstrapForm.Label>Título</BootstrapForm.Label>
 
             <BootstrapForm.Control
@@ -100,12 +100,12 @@ const Form: React.FC = () => {
             />
           </BootstrapForm.Group>
 
-          <BootstrapForm.Group>
+          <BootstrapForm.Group className="form-group">
             <BootstrapForm.Label>Descrição</BootstrapForm.Label>
 
             <BootstrapForm.Control
               as="textarea"
-              rows={3}
+              rows={10}
               name="description"
               value={model.description}
               onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}

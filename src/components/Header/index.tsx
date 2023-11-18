@@ -15,10 +15,10 @@ const Header: React.FC = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} className="nav-Item" to="/">
-              Minhas Tarefas
+              Minhas Anotações
             </Nav.Link>
             <Nav.Link as={Link} className="nav-Item" to="/cadastro">
-              Nova Tarefa
+              Nova Anotação
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

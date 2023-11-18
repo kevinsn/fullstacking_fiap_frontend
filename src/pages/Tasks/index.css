@@ -4,3 +4,20 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.task-card {
+    margin-bottom: 20px;
+}
+
+.texto-titulo{
+    font-size: 20px;
+}
+
+.texto{
+    font-size: 12px;
+    text-align: right;
+}
+
+.botao{
+    text-align: center;
+}
