@@ -61,7 +61,7 @@ const Tasks: React.FC = () => {
       <br />
       {tasks.map((task) => (
         <Card key={task.id} className="task-card">
-          <Card.Header className="texto-titulo">{task.title} <Card.Text className="texto">Data de Atualização: {formatDate(task.updated_at)} | Status: {task.finished ? "Finalizado" : "Pendente"}</Card.Text></Card.Header>
+          <Card.Header className="texto-titulo">{task.title} <Card.Text className="texto">Última alteração: {formatDate(task.updated_at)} {task.finished ? " (Anotação arquivada)" : ""}</Card.Text></Card.Header>
           <Card.Body>
             <pre style={{ whiteSpace: "pre-wrap" }}><Card.Text>{task.description}</Card.Text></pre>
             <div className="text-center">
@@ -75,11 +75,11 @@ const Tasks: React.FC = () => {
               </Button>{" "}
               <Button
                 size="sm"
-                variant="outline-success"
+                variant="outline-secondary"
                 disabled={task.finished}
                 onClick={() => finishedTask(task.id)}
               >
-                Concluir
+                Arquivar
               </Button>{" "}
               <Button
                 size="sm"
